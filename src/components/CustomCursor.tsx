@@ -1,20 +1,33 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 
 /**
  * CustomCursor component: The "Director's Loupe".
  * Replaces standard pointer with a cinematic ring that reacts to UI elements.
+ * Automatically disables on mobile and touch devices.
  */
 export default function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
   const followerRef = useRef<HTMLDivElement>(null);
   const labelRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    // Detect mobile/touch devices
+    const isTouch = window.matchMedia('(pointer: coarse)').matches || window.innerWidth < 768;
+    
+    if (isTouch) {
+      document.body.style.cursor = 'auto';
+      setIsVisible(false);
+      return;
+    }
+
+    setIsVisible(true);
     const cursor = cursorRef.current;
     const follower = followerRef.current;
 
     const moveCursor = (e: MouseEvent) => {
+      if (!cursor || !follower) return;
       // Main dot
       gsap.to(cursor, {
         x: e.clientX,
@@ -39,7 +52,7 @@ export default function CustomCursor() {
       const isInteractive = target.closest('button, a, .portfolio-item, .pricing-card');
       const isPortfolio = target.closest('.portfolio-item');
 
-      if (isInteractive) {
+      if (isInteractive && follower) {
         gsap.to(follower, {
           scale: 3,
           backgroundColor: 'rgba(255, 255, 255, 0.1)',
@@ -47,7 +60,7 @@ export default function CustomCursor() {
           duration: 0.3
         });
         
-        if (isPortfolio) {
+        if (isPortfolio && labelRef.current) {
           gsap.to(labelRef.current, { opacity: 1, scale: 1, duration: 0.3 });
         }
       }
@@ -57,21 +70,23 @@ export default function CustomCursor() {
       const target = e.target as HTMLElement;
       const isInteractive = target.closest('button, a, .portfolio-item, .pricing-card');
 
-      if (isInteractive) {
+      if (isInteractive && follower) {
         gsap.to(follower, {
           scale: 1,
           backgroundColor: 'transparent',
           borderColor: 'rgba(255, 255, 255, 0.3)',
           duration: 0.3
         });
-        gsap.to(labelRef.current, { opacity: 0, scale: 0.5, duration: 0.3 });
+        if (labelRef.current) {
+          gsap.to(labelRef.current, { opacity: 0, scale: 0.5, duration: 0.3 });
+        }
       }
     };
 
     window.addEventListener('mouseover', handleMouseEnter);
     window.addEventListener('mouseout', handleMouseLeave);
 
-    // Hide default cursor globally
+    // Hide default cursor globally only on desktop
     document.body.style.cursor = 'none';
 
     return () => {
@@ -81,6 +96,8 @@ export default function CustomCursor() {
       document.body.style.cursor = 'auto';
     };
   }, []);
+
+  if (!isVisible) return null;
 
   return (
     <>
