@@ -296,7 +296,7 @@ export default function Portfolio() {
       {/* Filter Navigation */}
       <nav 
         aria-label="Portfolio category filter"
-        className="flex flex-wrap items-center justify-center gap-4 py-6 border-b border-white/10 bg-black/50 backdrop-blur-md sticky top-[72px] z-20"
+        className="flex flex-nowrap overflow-x-auto items-center md:justify-center gap-2 md:gap-4 py-4 md:py-6 border-b border-white/10 bg-black/50 backdrop-blur-md sticky top-[60px] md:top-[72px] z-20 px-4 md:px-0 no-scrollbar"
       >
         {CATEGORIES.map((cat) => (
           <button
@@ -304,7 +304,7 @@ export default function Portfolio() {
             onClick={() => setFilter(cat)}
             aria-pressed={filter === cat}
             aria-controls="portfolio-grid"
-            className={`relative px-6 py-2 text-[10px] uppercase tracking-[0.2em] font-bold border transition-all duration-300 ${
+            className={`relative flex-shrink-0 px-4 md:px-6 py-1.5 md:py-2 text-[8px] md:text-[10px] uppercase tracking-[0.2em] font-bold border transition-all duration-300 ${
               filter === cat 
                 ? 'bg-foreground text-background border-foreground' 
                 : 'bg-transparent text-muted border-border hover:border-foreground/40 hover:text-foreground'
@@ -314,7 +314,7 @@ export default function Portfolio() {
             {filter === cat && (
               <motion.div 
                 layoutId="activeFilter"
-                className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-4 h-1 bg-foreground"
+                className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-4 h-[2px] md:h-1 bg-foreground"
                 transition={{ type: "spring", stiffness: 380, damping: 30 }}
               />
             )}
@@ -328,16 +328,16 @@ export default function Portfolio() {
         id="portfolio-grid"
         role="list"
         aria-label="Portfolio projects"
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 min-h-[600px] bg-background transition-colors duration-500"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 min-h-[400px] md:min-h-[600px] bg-background transition-colors duration-500"
       >
         {loading ? (
-          <div className="col-span-full py-48 flex flex-col items-center justify-center bg-surface transition-colors duration-500">
-            <LottieLoader size={250} />
+          <div className="col-span-full py-24 md:py-48 flex flex-col items-center justify-center bg-surface transition-colors duration-500">
+            <LottieLoader size={150} mdSize={250} />
             <motion.p 
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.8 }}
-              className="text-center text-[10px] uppercase tracking-[0.5em] text-muted font-bold mt-8"
+              className="text-center text-[8px] md:text-[10px] uppercase tracking-[0.4em] md:tracking-[0.5em] text-muted font-bold mt-6 md:mt-8"
             >
               Initializing Cinematic Vault
             </motion.p>
@@ -356,7 +356,7 @@ export default function Portfolio() {
               onClick={() => setSelectedProject(project)}
               onMouseEnter={(e) => handleMouseEnter(e, project.id)}
               onMouseLeave={handleMouseLeave}
-              className={`portfolio-item relative flex items-end p-10 aspect-square group cursor-pointer overflow-hidden ${
+              className={`portfolio-item relative flex items-end p-6 md:p-10 aspect-[4/5] md:aspect-square group cursor-pointer overflow-hidden ${
                 i % 2 === 0 ? 'bg-neutral-900 border-r border-b border-white/10' : 'bg-neutral-800 border-r border-b border-white/10 last:border-r-0'
               }`}
             >

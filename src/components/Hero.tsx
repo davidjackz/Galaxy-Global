@@ -105,10 +105,10 @@ export default function Hero() {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative flex min-h-[85vh] w-full flex-col items-center justify-center pt-12 pb-20 overflow-hidden bg-background transition-colors duration-500">
+    <div ref={containerRef} className="relative flex min-h-[70vh] md:min-h-[85vh] w-full flex-col items-center justify-center pt-8 md:pt-12 pb-12 md:pb-20 overflow-hidden bg-background transition-colors duration-500">
       {/* Background Layer 1: Distant Glows */}
       <div className="parallax-layer-1 absolute inset-0 -z-30 flex items-center justify-center pointer-events-none opacity-20">
-        <div className="h-[800px] w-[800px] rounded-full bg-foreground blur-[180px] opacity-10" />
+        <div className="h-[400px] md:h-[800px] w-[400px] md:w-[800px] rounded-full bg-foreground blur-[100px] md:blur-[180px] opacity-10" />
       </div>
 
       {/* Background Layer 2: Geometric Accents with Loops */}
@@ -116,44 +116,39 @@ export default function Hero() {
         <motion.div 
           animate={{ rotate: 360, y: [0, 20, 0] }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="floating-shape absolute top-1/4 left-1/4 w-32 h-32 border border-foreground/5" 
+          className="floating-shape absolute top-1/4 left-1/10 w-16 md:w-32 h-16 md:h-32 border border-foreground/5" 
         />
         <motion.div 
           animate={{ rotate: -360, x: [0, -20, 0] }}
           transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="floating-shape absolute bottom-1/4 right-1/4 w-48 h-48 border border-foreground/5" 
-        />
-        <motion.div 
-          animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="floating-shape absolute top-1/2 right-20 w-16 h-16 border border-foreground/10 rotate-[45deg]" 
+          className="floating-shape absolute bottom-1/4 right-1/10 w-24 md:w-48 h-24 md:h-48 border border-foreground/5" 
         />
       </div>
 
       {/* Background Layer 3: Grid Pattern */}
       <div className="parallax-layer-3 absolute inset-0 -z-10 opacity-[0.03] pointer-events-none">
-        <div className="w-full h-full" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, var(--foreground) 1px, transparent 0)', backgroundSize: '40px 40px' }} />
+        <div className="w-full h-full" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, var(--foreground) 1px, transparent 0)', backgroundSize: '30px 30px' }} />
       </div>
 
       {/* Background Layer 4: Distant Static Text / Branding */}
-      <div className="parallax-layer-4 absolute inset-0 -z-5 flex items-end justify-start p-20 pointer-events-none opacity-[0.02]">
-        <div className="text-[20vw] font-black uppercase tracking-tighter leading-none select-none text-foreground">
+      <div className="parallax-layer-4 absolute inset-0 -z-5 flex items-end justify-start p-10 md:p-20 pointer-events-none opacity-[0.01]">
+        <div className="text-[30vw] md:text-[20vw] font-black uppercase tracking-tighter leading-none select-none text-foreground">
           Galaxy
         </div>
       </div>
 
-      <div className="z-10 flex flex-col items-center text-center px-10">
+      <div className="z-10 flex flex-col items-center text-center px-6 md:px-10">
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.4 }}
           transition={{ duration: 2 }}
-          className="text-[10px] uppercase tracking-[0.6em] text-muted mb-10 font-bold"
+          className="text-[8px] md:text-[10px] uppercase tracking-[0.4em] md:tracking-[0.6em] text-muted mb-6 md:mb-10 font-bold"
         >
           Visual Storytelling Engineering
         </motion.div>
 
-        <h1 className="text-4xl md:text-[7vw] font-bold leading-[0.85] tracking-tighter uppercase max-w-4xl mb-12 text-foreground perspective-1000">
-          <div className="reveal-container overflow-hidden py-2 flex flex-wrap justify-center gap-[0.2em]">
+        <h1 className="text-3xl md:text-[7vw] font-bold leading-[0.9] md:leading-[0.85] tracking-tighter uppercase max-w-4xl mb-8 md:mb-12 text-foreground perspective-1000">
+          <div className="reveal-container overflow-hidden py-1 md:py-2 flex flex-wrap justify-center gap-[0.2em]">
             {title1.split(" ").map((word, wi) => (
               <span key={wi} className="inline-block whitespace-nowrap">
                 {word.split("").map((c, ci) => (
@@ -162,7 +157,7 @@ export default function Hero() {
               </span>
             ))}
           </div>
-          <div className="reveal-container overflow-hidden py-2 flex flex-wrap justify-center gap-[0.2em]">
+          <div className="reveal-container overflow-hidden py-1 md:py-2 flex flex-wrap justify-center gap-[0.2em]">
             {title2.split(" ").map((word, wi) => (
               <span key={wi} className="inline-block whitespace-nowrap">
                 {word.split("").map((c, ci) => (
@@ -173,7 +168,7 @@ export default function Hero() {
           </div>
         </h1>
 
-        <div className="subtitle-reveal max-w-xl text-sm md:text-base leading-relaxed border-l border-border pl-8 text-neutral-500 text-left">
+        <div className="subtitle-reveal max-w-md md:max-w-xl text-xs md:text-base leading-relaxed border-l border-border pl-6 md:pl-8 text-neutral-500 text-left mb-2 md:mb-0">
           Elite video architecture for the next dimension of creators. We don't just edit; we engineer audience retention through visual psychology and technical mastery.
         </div>
 
@@ -182,7 +177,7 @@ export default function Hero() {
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-12 flex flex-col sm:flex-row gap-6"
+          className="mt-8 md:mt-12 flex flex-col sm:flex-row gap-4 md:gap-6 w-full sm:w-auto"
         >
           <motion.button 
             whileHover={{ 
@@ -198,7 +193,7 @@ export default function Hero() {
                 document.querySelector('#portfolio')?.scrollIntoView({ behavior: 'smooth' });
               }
             }}
-            className="hero-cta px-12 py-5 bg-foreground text-background text-[11px] font-black uppercase tracking-[0.3em] transition-all"
+            className="hero-cta px-8 md:px-12 py-4 md:py-5 bg-foreground text-background text-[9px] md:text-[11px] font-black uppercase tracking-[0.3em] transition-all"
           >
             Explore Portfolio
           </motion.button>
@@ -217,7 +212,7 @@ export default function Hero() {
                 document.querySelector('#pricing')?.scrollIntoView({ behavior: 'smooth' });
               }
             }}
-            className="hero-cta px-12 py-5 border border-foreground/20 text-foreground text-[11px] font-black uppercase tracking-[0.3em] transition-all"
+            className="hero-cta px-8 md:px-12 py-4 md:py-5 border border-foreground/20 text-foreground text-[9px] md:text-[11px] font-black uppercase tracking-[0.3em] transition-all"
           >
             Get Started
           </motion.button>
@@ -228,9 +223,9 @@ export default function Hero() {
       <motion.div 
         animate={{ y: [0, 10, 0] }} 
         transition={{ repeat: Infinity, duration: 2.5 }}
-        className="absolute bottom-10 flex flex-col items-center gap-4 opacity-20"
+        className="absolute bottom-6 md:bottom-10 flex flex-col items-center gap-4 opacity-10 md:opacity-20"
       >
-        <div className="w-px h-16 bg-gradient-to-b from-foreground to-transparent" />
+        <div className="w-px h-10 md:h-16 bg-gradient-to-b from-foreground to-transparent" />
       </motion.div>
     </div>
   );

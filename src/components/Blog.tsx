@@ -31,12 +31,12 @@ export default function Blog() {
 
   return (
     <div ref={blogContainerRef} className="container mx-auto px-6">
-      <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-8">
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 md:mb-12 gap-6 md:gap-8">
         <div>
-          <span className="meta-label text-[10px] uppercase tracking-[0.4em] font-bold opacity-40 block mb-4 text-foreground transition-colors">Insights & Strategy</span>
-          <h2 className="text-4xl md:text-7xl font-black uppercase leading-tight text-foreground transition-colors">Expert <br/> Knowledge</h2>
+          <span className="meta-label text-[8px] md:text-[10px] uppercase tracking-[0.4em] font-bold opacity-40 block mb-2 md:mb-4 text-foreground transition-colors">Insights & Strategy</span>
+          <h2 className="text-3xl md:text-7xl font-black uppercase leading-tight text-foreground transition-colors">Expert <br className="hidden md:block"/> Knowledge</h2>
         </div>
-        <button className="text-[10px] uppercase tracking-widest font-bold border-b border-border pb-2 hover:opacity-100 opacity-60 transition-all text-foreground">
+        <button className="text-[8px] md:text-[10px] uppercase tracking-widest font-bold border-b border-border pb-1 md:pb-2 hover:opacity-100 opacity-60 transition-all text-foreground self-start">
           View All Insights
         </button>
       </div>
@@ -47,9 +47,9 @@ export default function Blog() {
             key={post.title} 
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="blog-card group py-12 md:py-16 hover:bg-foreground/[0.03] transition-all px-6 -mx-6 cursor-pointer flex flex-col md:flex-row justify-between gap-8 md:items-center relative"
+            className="blog-card group py-8 md:py-16 hover:bg-foreground/[0.03] transition-all px-4 -mx-4 md:px-6 md:-mx-6 cursor-pointer flex flex-col md:flex-row justify-between gap-6 md:gap-8 md:items-center relative"
             whileHover={{ x: 10 }}
           >
             {/* Hover Left Bar */}
@@ -58,30 +58,30 @@ export default function Blog() {
             />
 
             <div className="max-w-2xl text-foreground">
-              <div className="flex items-center gap-4 mb-6">
+              <div className="flex items-center gap-3 md:gap-4 mb-4 md:mb-6">
                 <div className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-foreground group-hover:bg-muted transition-colors" />
-                  <span className="text-[10px] uppercase tracking-[0.3em] font-black text-foreground">
+                  <div className="w-1 md:w-1.5 h-1 md:h-1.5 rounded-full bg-foreground group-hover:bg-muted transition-colors" />
+                  <span className="text-[8px] md:text-[10px] uppercase tracking-[0.3em] font-black text-foreground">
                     {post.category}
                   </span>
                 </div>
-                <div className="h-4 w-px bg-border" />
-                <span className="text-[10px] uppercase tracking-widest font-bold text-muted transition-all duration-500 opacity-30 group-hover:opacity-80 group-hover:text-foreground/80">
+                <div className="h-3 md:h-4 w-px bg-border" />
+                <span className="text-[8px] md:text-[10px] uppercase tracking-widest font-bold text-muted transition-all duration-500 opacity-30 group-hover:opacity-80 group-hover:text-foreground/80">
                   {post.date}
                 </span>
               </div>
               
-              <h3 className="text-2xl md:text-5xl font-bold uppercase leading-[1.05] tracking-tighter">
+              <h3 className="text-xl md:text-5xl font-bold uppercase leading-[1.1] md:leading-[1.05] tracking-tighter">
                 {post.title}
               </h3>
               
-              <p className="mt-6 text-sm md:text-base text-muted leading-relaxed max-w-xl transition-colors opacity-70 group-hover:opacity-100">
+              <p className="mt-4 md:mt-6 text-xs md:text-base text-muted leading-relaxed max-w-xl transition-colors opacity-70 group-hover:opacity-100 line-clamp-2 md:line-clamp-none">
                 {post.excerpt}
               </p>
             </div>
             
-            <div className="relative w-16 h-16 rounded-full border border-border flex items-center justify-center transition-all duration-700 ease-[0.16,1,0.3,1] group-hover:bg-foreground group-hover:border-foreground group-hover:rotate-[360deg]">
-              <ArrowUpRight className="w-6 h-6 text-foreground group-hover:text-background transition-transform group-hover:scale-125" />
+            <div className="relative w-12 h-12 md:w-16 md:h-16 rounded-full border border-border flex items-center justify-center transition-all duration-700 ease-[0.16,1,0.3,1] group-hover:bg-foreground group-hover:border-foreground group-hover:rotate-[360deg] self-end md:self-center">
+              <ArrowUpRight className="w-4 h-4 md:w-6 md:h-6 text-foreground group-hover:text-background transition-transform group-hover:scale-125" />
             </div>
           </motion.div>
         ))}
