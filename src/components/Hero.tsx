@@ -72,7 +72,7 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 0.5, scale: 1 }}
           transition={{ duration: 1.5 }}
-          className="text-[8px] md:text-[10px] uppercase tracking-[0.6em] text-muted mb-8 md:mb-12 font-black"
+          className="text-[12px] uppercase tracking-[0.6em] text-muted mb-8 md:mb-12 font-black"
         >
           Visual Engineering Studio
         </motion.div>
@@ -108,14 +108,14 @@ export default function Hero() {
               whileHover={{ y: -5, scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => (window as any).lenis?.scrollTo('#portfolio', { offset: -100 })}
-              className="hero-cta px-10 py-5 bg-foreground text-background text-[10px] font-black uppercase tracking-[0.4em] rounded-full transition-all"
+              className="hero-cta px-10 py-5 bg-foreground text-background text-[12px] font-black uppercase tracking-[0.4em] rounded-full transition-all"
             >
               Portfolio
             </motion.button>
             <motion.button 
               whileHover={{ y: -5, scale: 1.02, borderColor: 'var(--foreground)' }}
               whileTap={{ scale: 0.98 }}
-              className="hero-cta px-10 py-5 border border-border text-foreground text-[10px] font-black uppercase tracking-[0.4em] rounded-full transition-all"
+              className="hero-cta px-10 py-5 border border-border text-foreground text-[12px] font-black uppercase tracking-[0.4em] rounded-full transition-all"
             >
               Contact
             </motion.button>

@@ -31,12 +31,12 @@ export default function Blog() {
 
   return (
     <div ref={blogContainerRef} className="container mx-auto px-6">
-      <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 md:mb-12 gap-6 md:gap-8 px-2 md:px-0">
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-12 gap-10 md:gap-8 px-2 md:px-0">
         <div>
-          <span className="meta-label text-[10px] uppercase tracking-[0.4em] font-black opacity-40 block mb-3 md:mb-4 text-foreground transition-colors">Insights & Strategy</span>
+          <span className="meta-label text-[12px] uppercase tracking-[0.4em] font-black opacity-40 block mb-4 md:mb-4 text-foreground transition-colors">Insights & Strategy</span>
           <h2 className="text-3xl md:text-7xl font-black uppercase leading-tight text-foreground transition-colors">Expert Knowledge</h2>
         </div>
-        <button className="text-[10px] uppercase tracking-widest font-black border-b-2 border-border pb-1 md:pb-2 hover:opacity-100 opacity-60 transition-all text-foreground self-start">
+        <button className="text-[12px] uppercase tracking-widest font-black border-b-2 border-border pb-1 md:pb-2 hover:opacity-100 opacity-60 transition-all text-foreground self-start">
           View All Insights
         </button>
       </div>
@@ -60,13 +60,13 @@ export default function Blog() {
             <div className="max-w-2xl text-foreground">
               <div className="flex items-center gap-3 md:gap-4 mb-4 md:mb-6">
                 <div className="flex items-center gap-2">
-                  <div className="w-1 md:w-1.5 h-1 md:h-1.5 rounded-full bg-foreground group-hover:bg-muted transition-colors" />
-                  <span className="text-[8px] md:text-[10px] uppercase tracking-[0.3em] font-black text-foreground">
+                   <div className="w-1 md:w-1.5 h-1 md:h-1.5 rounded-full bg-foreground group-hover:bg-muted transition-colors" />
+                   <span className="text-[12px] md:text-[10px] uppercase tracking-[0.3em] font-black text-foreground">
                     {post.category}
                   </span>
                 </div>
                 <div className="h-3 md:h-4 w-px bg-border" />
-                <span className="text-[8px] md:text-[10px] uppercase tracking-widest font-bold text-muted transition-all duration-500 opacity-30 group-hover:opacity-80 group-hover:text-foreground/80">
+                <span className="text-[12px] md:text-[10px] uppercase tracking-widest font-bold text-muted transition-all duration-500 opacity-30 group-hover:opacity-80 group-hover:text-foreground/80">
                   {post.date}
                 </span>
               </div>

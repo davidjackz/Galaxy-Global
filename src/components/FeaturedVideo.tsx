@@ -36,8 +36,8 @@ export default function FeaturedVideo() {
     <section ref={sectionRef} className="py-20 md:py-32 bg-background overflow-hidden px-4 md:px-12">
       <div ref={videoWrapperRef} className="w-full max-w-7xl mx-auto flex flex-col">
         {/* Mobile-only header */}
-        <div className="mb-6 md:hidden px-2">
-           <span className="text-[10px] uppercase tracking-[0.4em] font-black text-muted block mb-2">Featured Showreel</span>
+        <div className="mb-10 md:hidden px-2">
+           <span className="text-[12px] uppercase tracking-[0.4em] font-black text-muted block mb-3">Featured Showreel</span>
            <h2 className="text-3xl font-black uppercase tracking-tighter leading-none">
              Visual <span className="text-muted italic font-light">Excellence</span> 2024.
            </h2>

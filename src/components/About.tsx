@@ -41,7 +41,7 @@ export default function About() {
     <div ref={containerRef} className="container mx-auto px-6 py-20 md:py-32">
        <div className="flex flex-col lg:flex-row gap-16 md:gap-32">
           <div className="lg:w-1/3">
-             <span className="about-reveal text-[10px] uppercase tracking-[0.6em] font-black text-muted block mb-6">Discovery</span>
+             <span className="about-reveal text-[12px] uppercase tracking-[0.6em] font-black text-muted block mb-6">Discovery</span>
              <h2 className="about-reveal text-4xl md:text-7xl font-black uppercase tracking-tighter leading-[0.85] mb-8">
                We Craft <br/> <span className="text-muted italic font-light">Next-Gen</span> <br/> Stories.
              </h2>
@@ -61,10 +61,10 @@ export default function About() {
                   { title: "High Fidelity", desc: "Uncompromising quality standards for pixel-perfect results in any resolution." }
                 ].map((item) => (
                   <div key={item.title} className="about-reveal space-y-3">
-                    <h3 className="text-[10px] uppercase tracking-[0.3em] font-bold text-foreground transition-colors group-hover:text-muted">
+                    <h3 className="text-[12px] md:text-[10px] uppercase tracking-[0.3em] font-bold text-foreground transition-colors group-hover:text-muted">
                       {item.title}
                     </h3>
-                    <p className="text-muted text-sm leading-relaxed">
+                    <p className="text-[12px] md:text-sm text-muted leading-relaxed">
                       {item.desc}
                     </p>
                   </div>

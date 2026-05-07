@@ -80,10 +80,10 @@ export default function Preloader() {
         </div>
         
         <div className="flex flex-col items-center gap-5">
-          <div className="preloader-text text-[10px] md:text-sm uppercase tracking-[1.5em] md:tracking-[2.5em] text-white font-black text-center pl-[1.5em] md:pl-[2.5em]">
-            Galaxy Collective
+          <div className="preloader-text text-[12px] md:text-sm uppercase tracking-[1.5em] md:tracking-[2.5em] text-white font-black text-center pl-[1.5em] md:pl-[2.5em]">
+            GALAXY GLOBAL
           </div>
-          <div className="preloader-text text-[8px] uppercase tracking-[0.5em] text-white/40 font-bold mb-2">
+          <div className="preloader-text text-[12px] md:text-[8px] uppercase tracking-[0.5em] text-white/40 font-bold mb-2">
             Digital Architecture // V2.0
           </div>
           <div className="preloader-text w-12 h-px bg-white/20 relative overflow-hidden">
@@ -93,10 +93,10 @@ export default function Preloader() {
       </div>
       
       <div className="absolute bottom-12 z-10 overflow-hidden flex flex-col items-center gap-2">
-        <div className="preloader-text text-[9px] md:text-[10px] uppercase tracking-[0.5em] md:tracking-[0.8em] text-white/20">
+        <div className="preloader-text text-[12px] md:text-[10px] uppercase tracking-[0.5em] md:tracking-[0.8em] text-white/20">
           Cinematic Production System // 2026
         </div>
-        <div className="preloader-text text-[7px] uppercase tracking-widest text-white/10 font-mono">
+        <div className="preloader-text text-[12px] md:text-[7px] uppercase tracking-widest text-white/10 font-mono">
           STATUS: INITIALIZING_CORE_ENGINE
         </div>
       </div>

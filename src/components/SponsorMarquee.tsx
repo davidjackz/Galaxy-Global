@@ -48,7 +48,7 @@ export default function SponsorMarquee() {
   return (
     <div 
       ref={containerRef} 
-      className="py-12 bg-background border-y border-border overflow-hidden relative cursor-default transition-colors duration-500"
+      className="py-6 bg-background border-y border-border overflow-hidden relative cursor-default transition-colors duration-500"
     >
       {/* Edge Fades */}
       <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-background to-transparent z-10 transition-colors duration-500" />
@@ -56,17 +56,17 @@ export default function SponsorMarquee() {
 
       <div 
         ref={sliderRef} 
-        className="flex whitespace-nowrap gap-20 items-center w-fit"
+        className="flex whitespace-nowrap gap-12 items-center w-fit"
       >
         {PARTNERS.map((partner, i) => (
           <div 
             key={i} 
             className="flex items-center gap-6 group"
           >
-            <span className="text-4xl text-foreground/10 group-hover:text-foreground transition-colors duration-700">
+            <span className="text-xl text-foreground/10 group-hover:text-foreground transition-colors duration-700">
               {partner.icon}
             </span>
-            <span className="text-sm font-black uppercase tracking-[0.5em] text-foreground/20 group-hover:text-foreground transition-colors duration-700">
+            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-foreground/20 group-hover:text-foreground transition-colors duration-700">
               {partner.name}
             </span>
           </div>

@@ -38,12 +38,12 @@ export default function ReelSection() {
   return (
     <section ref={sectionRef} className="py-16 bg-black border-b border-white/10 overflow-hidden relative">
       <div className="container mx-auto px-4 mb-12 text-center">
-        <span className="text-[8px] md:text-[10px] uppercase tracking-[1em] text-white/30 font-bold mb-4 block">Visual Repository</span>
+        <span className="text-[12px] uppercase tracking-[1em] text-white/30 font-bold mb-4 block">Visual Repository</span>
         <h2 className="text-3xl md:text-7xl font-bold uppercase tracking-tighter leading-none">The Vision</h2>
       </div>
 
       <div className="container mx-auto px-4">
-        <div ref={containerRef} className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 lg:gap-8">
+        <div ref={containerRef} className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-4 lg:gap-8">
           {REELS.map((reel, i) => (
             <div 
               key={reel.id}
@@ -53,10 +53,10 @@ export default function ReelSection() {
               <div className="absolute inset-0 z-20 pointer-events-none p-3 md:p-6 flex flex-col justify-between border-[1px] border-white/10">
                 <div className="flex justify-between items-start opacity-40 group-hover:opacity-100 transition-opacity">
                   <div className="w-4 md:w-6 h-px bg-white" />
-                  <div className="text-[6px] md:text-[8px] uppercase tracking-widest text-white">REEL_{i + 1}</div>
+                  <div className="text-[12px] md:text-[8px] uppercase tracking-widest text-white">REEL_{i + 1}</div>
                 </div>
                 <div className="flex justify-between items-end opacity-40 group-hover:opacity-100 transition-opacity">
-                  <div className="text-[6px] md:text-[8px] font-bold text-white uppercase tracking-widest truncate max-w-[80%]">{reel.title}</div>
+                  <div className="text-[12px] md:text-[8px] font-bold text-white uppercase tracking-widest truncate max-w-[80%]">{reel.title}</div>
                   <div className="w-4 md:w-6 h-px bg-white" />
                 </div>
               </div>
@@ -80,7 +80,7 @@ export default function ReelSection() {
       </div>
 
       <div className="mt-20 container mx-auto px-6 text-center">
-        <p className="text-[10px] uppercase tracking-[0.4em] font-medium text-white/20 max-w-lg mx-auto leading-relaxed">
+        <p className="text-[12px] md:text-[10px] uppercase tracking-[0.4em] font-medium text-white/20 max-w-lg mx-auto leading-relaxed">
           Proprietary visual algorithms applied to global brand storytelling. 
           Synchronized for high-impact cinematic distribution.
         </p>

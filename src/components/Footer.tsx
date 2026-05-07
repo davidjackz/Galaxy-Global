@@ -23,7 +23,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 mb-16 md:mb-32">
           {/* Left Column: Get in Touch */}
           <div>
-            <span className="text-[8px] md:text-[10px] font-bold uppercase tracking-[0.4em] md:tracking-[0.5em] text-muted mb-4 md:mb-6 block">Ready to elevate?</span>
+            <span className="text-[12px] md:text-[10px] font-bold uppercase tracking-[0.4em] md:tracking-[0.5em] text-muted mb-4 md:mb-6 block">Ready to elevate?</span>
             <h2 className="text-3xl md:text-7xl font-bold uppercase tracking-tighter mb-8 md:mb-12 max-w-lg leading-[1] md:leading-[0.9]">
               Let's create the <span className="text-muted italic">unforgettable</span>.
             </h2>
@@ -37,7 +37,7 @@ export default function Footer() {
               <motion.button 
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full md:w-auto px-8 md:px-10 py-4 md:py-6 bg-foreground text-background text-[9px] md:text-[11px] font-black uppercase tracking-[0.3em] md:tracking-[0.4em] rounded-sm hover:bg-muted transition-all shadow-2xl shadow-foreground/10"
+                className="w-full md:w-auto px-8 md:px-10 py-4 md:py-6 bg-foreground text-background text-[12px] md:text-[11px] font-black uppercase tracking-[0.3em] md:tracking-[0.4em] rounded-sm hover:bg-muted transition-all shadow-2xl shadow-foreground/10"
               >
                 Request a Consultation
               </motion.button>
@@ -52,7 +52,7 @@ export default function Footer() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: i * 0.1 }}
                     whileHover={{ scale: 1.1, color: 'var(--muted)' }}
-                    className="group/social relative flex items-center gap-2 text-[8px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.3em] font-bold text-muted transition-colors font-sans"
+                    className="group/social relative flex items-center gap-2 text-[12px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.3em] font-bold text-muted transition-colors font-sans"
                   >
                     <social.icon size={12} className="md:w-3.5 md:h-3.5 opacity-40" />
                     <span className="hidden sm:inline">{social.label}</span>
@@ -70,7 +70,7 @@ export default function Footer() {
             {/* Right Column: Information Grid */}
           <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
             <div>
-              <h4 className="text-[8px] md:text-[10px] uppercase tracking-[0.4em] font-black text-foreground mb-6 md:mb-8 border-b border-border pb-3 md:pb-4 transition-colors">Studio</h4>
+              <h4 className="text-[12px] md:text-[10px] uppercase tracking-[0.4em] font-black text-foreground mb-6 md:mb-8 border-b border-border pb-3 md:pb-4 transition-colors">Studio</h4>
               <ul className="space-y-3 md:space-y-4 text-xs md:text-sm text-muted transition-colors">
                 <li 
                   onClick={() => {
@@ -97,7 +97,7 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h4 className="text-[8px] md:text-[10px] uppercase tracking-[0.4em] font-black text-foreground mb-6 md:mb-8 border-b border-border pb-3 md:pb-4 transition-colors">Connect</h4>
+              <h4 className="text-[12px] md:text-[10px] uppercase tracking-[0.4em] font-black text-foreground mb-6 md:mb-8 border-b border-border pb-3 md:pb-4 transition-colors">Connect</h4>
               <ul className="space-y-3 md:space-y-4 text-xs md:text-sm text-muted transition-colors">
                 <li className="hover:text-foreground transition-colors cursor-pointer">Brief Us</li>
                 <li className="hover:text-foreground transition-colors cursor-pointer">Collab</li>
@@ -106,7 +106,7 @@ export default function Footer() {
               </ul>
             </div>
             <div className="col-span-2 md:col-span-1">
-              <h4 className="text-[8px] md:text-[10px] uppercase tracking-[0.4em] font-black text-foreground mb-6 md:mb-8 border-b border-border pb-3 md:pb-4 transition-colors">Legal</h4>
+              <h4 className="text-[12px] md:text-[10px] uppercase tracking-[0.4em] font-black text-foreground mb-6 md:mb-8 border-b border-border pb-3 md:pb-4 transition-colors">Legal</h4>
               <ul className="space-y-3 md:space-y-4 text-xs md:text-sm text-muted transition-colors">
                 <li className="hover:text-foreground transition-colors cursor-pointer">Privacy Policy</li>
                 <li className="hover:text-foreground transition-colors cursor-pointer">Terms of Service</li>
@@ -121,20 +121,19 @@ export default function Footer() {
         <div className="pt-8 md:pt-12 border-t border-border flex flex-col md:flex-row justify-between items-center gap-6 md:gap-8 transition-colors">
           <div className="flex flex-col items-center md:items-start gap-2">
             <div className="text-lg md:text-xl font-black uppercase tracking-[0.2em] flex items-center gap-2 text-foreground transition-colors">
-              <div className="w-3 h-3 md:w-4 md:h-4 bg-foreground rotate-45 transition-colors" />
-              Galaxy
+              GALAXY GLOBAL
             </div>
-            <p className="text-[8px] md:text-[10px] text-muted uppercase tracking-widest transition-colors">
+            <p className="text-[12px] md:text-[10px] text-muted uppercase tracking-widest transition-colors">
               © 2026 Cinematic Production System
             </p>
           </div>
           
-          <div className="flex items-center gap-8">
-            <div className="flex items-center gap-2 md:gap-3">
-              <div className="w-1.5 md:w-2 h-1.5 md:h-2 rounded-full bg-green-500 animate-pulse" />
-              <span className="text-[8px] md:text-[10px] uppercase tracking-widest text-muted font-bold transition-colors">System Status: Optimal</span>
+            <div className="flex items-center gap-8">
+              <div className="flex items-center gap-2 md:gap-3">
+                <div className="w-1.5 md:w-2 h-1.5 md:h-2 rounded-full bg-green-500 animate-pulse" />
+                <span className="text-[12px] md:text-[10px] uppercase tracking-widest text-muted font-bold transition-colors">System Status: Optimal</span>
+              </div>
             </div>
-          </div>
         </div>
       </div>
     </footer>

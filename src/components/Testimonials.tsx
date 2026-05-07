@@ -46,7 +46,7 @@ export default function Testimonials() {
     <section className="py-16 bg-background text-foreground border-b border-border overflow-hidden transition-colors duration-500">
       <div className="container mx-auto px-6">
         <div className="flex flex-col items-center text-center mb-10">
-          <span className="text-[10px] uppercase tracking-[1em] text-muted font-bold mb-4 block">Voice of the Industry</span>
+          <span className="text-[12px] uppercase tracking-[1em] text-muted font-bold mb-4 block">Voice of the Industry</span>
           <h2 className="text-3xl md:text-5xl font-bold uppercase tracking-tighter">Client Testimony</h2>
         </div>
 
@@ -87,10 +87,10 @@ export default function Testimonials() {
                   <div className="flex flex-col items-center">
                     <div className="w-8 h-px bg-border mb-6" />
                     <cite className="not-italic">
-                      <span className="text-[11px] font-black uppercase tracking-[0.4em] text-foreground block mb-1">
+                      <span className="text-[12px] md:text-[11px] font-black uppercase tracking-[0.4em] text-foreground block mb-1">
                         {TESTIMONIALS[index].author}
                       </span>
-                      <span className="text-[9px] uppercase tracking-[0.2em] text-muted font-bold">
+                      <span className="text-[12px] md:text-[9px] uppercase tracking-[0.2em] text-muted font-bold">
                         {TESTIMONIALS[index].role}
                       </span>
                     </cite>

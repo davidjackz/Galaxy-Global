@@ -53,10 +53,7 @@ export default function Navigation() {
         }`}
       >
         <div className="flex items-center gap-3">
-          <div className="w-6 h-6 bg-foreground flex items-center justify-center">
-            <div className="w-3 h-3 bg-background rotate-45" />
-          </div>
-          <span className="font-display text-sm font-black uppercase tracking-tighter text-foreground">Galaxy</span>
+          <span className="font-display text-sm font-black uppercase tracking-tighter text-foreground">GALAXY GLOBAL</span>
         </div>
 
         <div className="flex-grow flex items-center justify-center gap-10 text-[9px] uppercase tracking-[0.4em] font-bold text-muted">
@@ -99,10 +96,7 @@ export default function Navigation() {
       {/* Mobile Sticky Top Header */}
       <nav className="fixed top-0 left-0 w-full lg:hidden flex items-center justify-between px-6 py-4 bg-background/80 backdrop-blur-md border-b border-border z-[100]">
         <div className="flex items-center gap-2">
-          <div className="w-5 h-5 bg-foreground flex items-center justify-center">
-            <div className="w-2.5 h-2.5 bg-background rotate-45" />
-          </div>
-          <span className="font-display text-sm font-black uppercase tracking-tighter text-foreground">Galaxy</span>
+          <span className="font-display text-sm font-black uppercase tracking-tighter text-foreground">GALAXY GLOBAL</span>
         </div>
         
         <div className="flex items-center gap-2">
@@ -154,7 +148,7 @@ export default function Navigation() {
         <motion.button 
           initial={{ opacity: 0, scale: 0.9 }}
           animate={isOpen ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-          className="mt-12 px-10 py-5 bg-foreground text-background text-xs font-black uppercase tracking-[0.3em] rounded-full"
+          className="mt-12 px-10 py-5 bg-foreground text-background text-[12px] font-black uppercase tracking-[0.3em] rounded-full"
         >
           Start Project
         </motion.button>
@@ -171,7 +165,7 @@ export default function Navigation() {
                 const lenis = (window as any).lenis;
                 if (lenis) lenis.scrollTo(link.href, { offset: -80 });
               }}
-              className="px-4 py-2 bg-background/50 backdrop-blur-lg border border-border rounded-full text-[7px] uppercase font-black tracking-widest text-muted"
+              className="px-4 py-2 bg-background/50 backdrop-blur-lg border border-border rounded-full text-[12px] uppercase font-black tracking-widest text-muted"
            >
              {link.name}
            </a>

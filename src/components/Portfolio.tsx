@@ -51,6 +51,7 @@ const PROJECTS: Project[] = [
     image: 'https://i.postimg.cc/ZqNN5mww/galaxy-navatra-logo.jpg',
     videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-close-up-of-a-man-using-a-camera-34444-large.mp4',
     vimeoUrl: 'https://player.vimeo.com/video/1189630836?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479',
+    description: 'Bespoke editorial storytelling and photography that captures the essence of modern identity.',
     tech: ['Copywriting', 'Layout Design', 'Photography']
   },
   { 
@@ -199,7 +200,7 @@ export default function Portfolio() {
     <div ref={containerRef} className="flex flex-col py-16 md:py-24 bg-background px-4 md:px-12">
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-8 px-2 md:px-0">
         <div className="max-w-2xl">
-          <span className="text-[10px] md:text-[12px] uppercase tracking-[0.5em] font-black text-muted block mb-3 md:mb-4">Latest Works</span>
+          <span className="text-[12px] uppercase tracking-[0.5em] font-black text-muted block mb-3 md:mb-4">Latest Works</span>
           <h2 className="text-3xl md:text-8xl font-black uppercase tracking-tighter leading-[0.85]">
             Cinematic <br className="hidden md:block"/> <span className="text-muted italic font-light">Architecture</span>.
           </h2>
@@ -214,7 +215,7 @@ export default function Portfolio() {
             <button
               key={cat}
               onClick={() => setFilter(cat)}
-              className={`px-4 md:px-6 py-2 md:py-2.5 text-[8px] md:text-[10px] uppercase tracking-widest font-black rounded-full border transition-all duration-500 ${
+              className={`px-4 md:px-6 py-2 md:py-2.5 text-[12px] uppercase tracking-widest font-black rounded-full border transition-all duration-500 ${
                 filter === cat 
                   ? 'bg-foreground text-background border-foreground' 
                   : 'bg-transparent text-muted border-border hover:border-foreground/40'
@@ -230,12 +231,12 @@ export default function Portfolio() {
       <div 
         ref={gridRef}
         id="portfolio-grid"
-        className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 lg:gap-6 min-h-[400px]"
+        className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-4 lg:gap-6 min-h-[400px]"
       >
         {loading ? (
           <div className="col-span-full py-24 flex flex-col items-center justify-center">
             <LottieLoader size={120} />
-            <p className="text-[10px] uppercase tracking-[0.5em] text-muted font-bold mt-8">Developing Scene</p>
+            <p className="text-[12px] uppercase tracking-[0.5em] text-muted font-bold mt-8">Developing Scene</p>
           </div>
         ) : (
           <AnimatePresence mode="popLayout">
@@ -260,7 +261,7 @@ export default function Portfolio() {
                 />
                 
                 {/* Floating Category Label */}
-                <div className="absolute top-3 md:top-4 left-3 md:left-4 px-2 md:px-3 py-1 bg-background/60 backdrop-blur-md rounded-full text-[6px] md:text-[7px] uppercase font-black tracking-widest text-foreground opacity-60">
+                <div className="absolute top-3 md:top-4 left-3 md:left-4 px-2 md:px-3 py-1 bg-background/60 backdrop-blur-md rounded-full text-[12px] md:text-[7px] lg:text-[8px] uppercase font-black tracking-widest text-foreground opacity-60">
                    {project.category}
                 </div>
               </div>
@@ -270,7 +271,7 @@ export default function Portfolio() {
                    <h3 className="text-xs md:text-sm lg:text-base font-black uppercase tracking-tighter leading-tight mb-0.5 md:mb-1 truncate">
                     {project.title}
                   </h3>
-                  <div className="text-[7px] md:text-[8px] lg:text-[9px] uppercase tracking-widest text-muted font-bold truncate">
+                  <div className="text-[12px] md:text-[8px] lg:text-[9px] uppercase tracking-widest text-muted font-bold truncate">
                     View Case Study
                   </div>
                 </div>
@@ -303,7 +304,7 @@ export default function Portfolio() {
                 <div className="w-full lg:w-2/3 bg-black relative flex items-center justify-center overflow-hidden aspect-video lg:aspect-auto">
                    {selectedProject.vimeoUrl ? (
                       <iframe 
-                        src={`${selectedProject.vimeoUrl.includes('?') ? selectedProject.vimeoUrl : selectedProject.vimeoUrl + '?'}autoplay=1&muted=0&background=0&controls=1`} 
+                        src={`${selectedProject.vimeoUrl}${selectedProject.vimeoUrl.includes('?') ? '&' : '?'}autoplay=1&muted=0&controls=1&title=0&byline=0&portrait=0`} 
                         className="absolute inset-0 w-full h-full"
                         frameBorder="0" 
                         allow="autoplay; fullscreen; picture-in-picture"
@@ -317,26 +318,30 @@ export default function Portfolio() {
                         className="w-full h-full object-contain" 
                       />
                    )}
+                   
+                   {/* Minimal Non-intrusive Overlay for Mobile */}
+                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none md:hidden" />
+                   
                    <button 
                     onClick={() => setSelectedProject(null)} 
-                    className="absolute top-6 right-6 p-3 bg-black/50 text-white rounded-full backdrop-blur-lg lg:hidden"
+                    className="absolute top-4 right-4 z-40 p-2.5 bg-background/20 backdrop-blur-xl rounded-full text-white lg:hidden border border-white/10 hover:bg-background/40 transition-colors"
                    >
-                     <X size={20} />
+                      <X size={18} />
                    </button>
                 </div>
                 
                 <div className="flex-grow p-6 md:p-14 overflow-y-auto lg:w-1/3">
-                   <span className="text-[8px] md:text-[10px] uppercase tracking-[0.4em] font-black text-muted block mb-4 md:mb-6">{selectedProject.category}</span>
+                   <span className="text-[12px] uppercase tracking-[0.4em] font-black text-muted block mb-4 md:mb-6">{selectedProject.category}</span>
                    <h2 className="text-2xl md:text-6xl font-black uppercase tracking-tighter mb-6 md:mb-8 leading-tight md:leading-none">{selectedProject.title}</h2>
-                   <p className="text-muted leading-relaxed mb-8 md:mb-10 text-xs md:text-base">{selectedProject.description}</p>
+                   <p className="text-muted leading-relaxed mb-8 md:mb-10 text-[12px] md:text-base">{selectedProject.description}</p>
                    
                    <div className="flex flex-wrap gap-2 mb-8 md:mb-12">
                       {selectedProject.tech.map(t => (
-                        <span key={t} className="px-3 md:px-4 py-1.5 md:py-2 bg-background border border-border rounded-full text-[8px] md:text-[9px] uppercase font-black tracking-widest text-muted">{t}</span>
+                        <span key={t} className="px-3 md:px-4 py-1.5 md:py-2 bg-background border border-border rounded-full text-[12px] md:text-[9px] uppercase font-black tracking-widest text-muted">{t}</span>
                       ))}
                    </div>
                    
-                   <button className="w-full py-4 md:py-5 bg-foreground text-background text-[10px] md:text-xs font-black uppercase tracking-[0.3em] rounded-full hover:scale-[1.02] transition-transform">
+                   <button className="w-full py-4 md:py-5 bg-foreground text-background text-[12px] font-black uppercase tracking-[0.3em] rounded-full hover:scale-[1.02] transition-transform">
                       Contact for Similar Project
                    </button>
                 </div>
