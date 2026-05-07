@@ -17,28 +17,31 @@ export default function Preloader() {
     // 1. Initial State
     gsap.set([leftPanelRef.current, rightPanelRef.current], { width: '50%' });
 
-    // 2. Pulse of the central geometric element
+    // 2. Pulse of the central geometric element & Text Reveal
     tl.fromTo(contentRef.current, 
-      { scale: 0.8, opacity: 0 }, 
-      { scale: 1, opacity: 1, duration: 2, ease: 'power2.inOut' }
+      { scale: 0.9, opacity: 0, y: 20 }, 
+      { scale: 1, opacity: 1, y: 0, duration: 1.5, ease: 'power4.out' }
     )
-    .to(contentRef.current, {
-      scale: 0.9,
+    .from('.preloader-text', {
       opacity: 0,
+      y: 10,
+      stagger: 0.1,
       duration: 1,
-      ease: 'power3.inOut',
+      ease: 'power2.out'
+    }, '-=1')
+    
+    // 3. Curtain Lift: Horizontal split (Clean move)
+    .to([leftPanelRef.current, rightPanelRef.current], {
+      xPercent: (i) => i === 0 ? -100 : 100,
+      duration: 1.2,
+      ease: 'expo.inOut',
     }, '+=0.5')
-    // 3. Curtain Lift: Horizontal split
-    .to(leftPanelRef.current, {
-      xPercent: -100,
-      duration: 1.5,
-      ease: 'expo.inOut',
-    }, 'split')
-    .to(rightPanelRef.current, {
-      xPercent: 100,
-      duration: 1.5,
-      ease: 'expo.inOut',
-    }, 'split')
+    .to(contentRef.current, {
+      opacity: 0,
+      scale: 1.1,
+      duration: 0.8,
+      ease: 'power2.inOut'
+    }, '<') // Start fading content as curtains split
     .to(containerRef.current, {
       display: 'none',
     });
@@ -76,19 +79,25 @@ export default function Preloader() {
           />
         </div>
         
-        <div className="flex flex-col items-center gap-4">
-          <div className="text-[10px] uppercase tracking-[2em] text-white font-black">
-            Galaxy Global
+        <div className="flex flex-col items-center gap-5">
+          <div className="preloader-text text-[10px] md:text-sm uppercase tracking-[1.5em] md:tracking-[2.5em] text-white font-black text-center pl-[1.5em] md:pl-[2.5em]">
+            Galaxy Collective
           </div>
-          <div className="w-12 h-px bg-white/20 relative overflow-hidden">
+          <div className="preloader-text text-[8px] uppercase tracking-[0.5em] text-white/40 font-bold mb-2">
+            Digital Architecture // V2.0
+          </div>
+          <div className="preloader-text w-12 h-px bg-white/20 relative overflow-hidden">
             <div className="absolute inset-0 bg-white translate-x-[-100%] animate-[shimmer_2s_infinite]" style={{ width: '50%' }} />
           </div>
         </div>
       </div>
       
-      <div className="absolute bottom-12 z-10">
-        <div className="text-[10px] uppercase tracking-[0.8em] text-white/20">
+      <div className="absolute bottom-12 z-10 overflow-hidden flex flex-col items-center gap-2">
+        <div className="preloader-text text-[9px] md:text-[10px] uppercase tracking-[0.5em] md:tracking-[0.8em] text-white/20">
           Cinematic Production System // 2026
+        </div>
+        <div className="preloader-text text-[7px] uppercase tracking-widest text-white/10 font-mono">
+          STATUS: INITIALIZING_CORE_ENGINE
         </div>
       </div>
     </div>

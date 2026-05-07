@@ -10,7 +10,7 @@ export default function Terms() {
         y: 20,
         opacity: 0,
         duration: 1,
-        ease: 'expo.out',
+        ease: 'power4.out',
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top 85%',

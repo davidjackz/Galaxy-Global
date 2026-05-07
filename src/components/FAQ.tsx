@@ -31,7 +31,7 @@ export default function FAQ() {
         y: 40,
         opacity: 0,
         duration: 1,
-        ease: 'expo.out',
+        ease: 'power4.out',
         scrollTrigger: {
           trigger: sectionRef.current,
           start: 'top 90%',

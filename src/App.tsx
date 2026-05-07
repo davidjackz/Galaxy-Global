@@ -45,7 +45,6 @@ export default function App() {
     <SmoothScroll>
       <ScrollProgress />
       <Preloader />
-      <CustomCursor />
       <BackgroundParallax />
       <Analytics />
       <ScrollToTop />

@@ -24,7 +24,7 @@ export default function Collaboration() {
         opacity: 0,
         stagger: 0.1,
         duration: 1,
-        ease: 'expo.out',
+        ease: 'power4.out',
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top 85%',

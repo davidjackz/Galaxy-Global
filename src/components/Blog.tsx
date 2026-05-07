@@ -31,12 +31,12 @@ export default function Blog() {
 
   return (
     <div ref={blogContainerRef} className="container mx-auto px-6">
-      <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 md:mb-12 gap-6 md:gap-8">
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 md:mb-12 gap-6 md:gap-8 px-2 md:px-0">
         <div>
-          <span className="meta-label text-[8px] md:text-[10px] uppercase tracking-[0.4em] font-bold opacity-40 block mb-2 md:mb-4 text-foreground transition-colors">Insights & Strategy</span>
-          <h2 className="text-3xl md:text-7xl font-black uppercase leading-tight text-foreground transition-colors">Expert <br className="hidden md:block"/> Knowledge</h2>
+          <span className="meta-label text-[10px] uppercase tracking-[0.4em] font-black opacity-40 block mb-3 md:mb-4 text-foreground transition-colors">Insights & Strategy</span>
+          <h2 className="text-3xl md:text-7xl font-black uppercase leading-tight text-foreground transition-colors">Expert Knowledge</h2>
         </div>
-        <button className="text-[8px] md:text-[10px] uppercase tracking-widest font-bold border-b border-border pb-1 md:pb-2 hover:opacity-100 opacity-60 transition-all text-foreground self-start">
+        <button className="text-[10px] uppercase tracking-widest font-black border-b-2 border-border pb-1 md:pb-2 hover:opacity-100 opacity-60 transition-all text-foreground self-start">
           View All Insights
         </button>
       </div>

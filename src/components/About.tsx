@@ -10,69 +10,68 @@ export default function About() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Reveal Heading
-      gsap.from('.about-heading', {
-        y: 60,
-        opacity: 0,
-        duration: 1.2,
-        ease: 'expo.out',
+      gsap.from(".about-line", {
+        scaleX: 0,
+        transformOrigin: "left",
+        stagger: 0.2,
+        duration: 1.5,
+        ease: "power4.out",
         scrollTrigger: {
-          trigger: '.about-heading',
-          start: 'top 90%',
+          trigger: containerRef.current,
+          start: "top 80%",
         }
       });
-
-      // Staggered Reveal for items
-      gsap.from('.about-item', {
+      
+      gsap.from(".about-reveal", {
         y: 40,
         opacity: 0,
-        duration: 1,
-        stagger: 0.15,
-        ease: 'power2.out',
+        stagger: 0.1,
+        duration: 1.2,
+        ease: "power3.out",
         scrollTrigger: {
-          trigger: '.about-grid',
-          start: 'top 85%',
+          trigger: containerRef.current,
+          start: "top 70%",
         }
       });
     }, containerRef);
-
     return () => ctx.revert();
   }, []);
 
   return (
-    <div ref={containerRef} className="container mx-auto px-6">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-16 items-start divide-y lg:divide-y-0 lg:divide-x divide-border">
-        <div className="lg:col-span-5 pb-6 md:pb-10 lg:pb-0 lg:pr-16 about-heading">
-          <span className="text-[8px] md:text-[10px] uppercase tracking-[0.4em] md:tracking-[0.5em] font-bold text-muted mb-4 md:mb-6 block transition-colors">The Mission</span>
-          <h2 className="text-3xl md:text-7xl font-bold uppercase leading-[1] md:leading-[0.9] tracking-tighter text-foreground transition-colors">
-            Global Vision. <br/><span className="text-muted">Local Impact.</span>
-          </h2>
-        </div>
-        
-        <div className="lg:col-span-7 pt-6 md:pt-10 lg:pt-0 lg:pl-16 space-y-8 md:space-y-12">
-          <div className="space-y-4 md:space-y-6 about-item">
-            <p className="text-lg md:text-2xl font-medium text-foreground/90 leading-tight tracking-tight border-l-2 border-foreground/30 pl-6 md:pl-8 italic transition-colors">
-              "We don't just edit videos. We engineer emotional impact and algorithmic dominance through technical precision."
-            </p>
+    <div ref={containerRef} className="container mx-auto px-6 py-20 md:py-32">
+       <div className="flex flex-col lg:flex-row gap-16 md:gap-32">
+          <div className="lg:w-1/3">
+             <span className="about-reveal text-[10px] uppercase tracking-[0.6em] font-black text-muted block mb-6">Discovery</span>
+             <h2 className="about-reveal text-4xl md:text-7xl font-black uppercase tracking-tighter leading-[0.85] mb-8">
+               We Craft <br/> <span className="text-muted italic font-light">Next-Gen</span> <br/> Stories.
+             </h2>
+             <div className="about-line h-[1px] w-full bg-border" />
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 md:gap-y-10 pt-8 md:pt-12 border-t border-border about-grid">
-            {[
-              { t: "Cinematic Mastery", d: "Industry-standard tools for visual experiences that command global attention." },
-              { t: "Conversion Architecture", d: "Optimizing pacing and transitions for maximum retention and ROI." },
-              { t: "Global Scalability", d: "Built for high-volume YouTube services and enterprise agency needs." },
-              { t: "SEO & Performance", d: "Technical optimization ensuring your content captures top-tier organic traffic." }
-            ].map((item) => (
-              <div key={item.t} className="space-y-2 about-item">
-                <h3 className="text-[8px] md:text-[10px] font-bold uppercase tracking-widest text-muted transition-colors">{item.t}</h3>
-                <p className="text-[10px] md:text-xs text-muted leading-relaxed uppercase tracking-tighter transition-colors">
-                  {item.d}
-                </p>
-              </div>
-            ))}
+          
+          <div className="lg:w-2/3 space-y-12">
+             <p className="about-reveal text-xl md:text-3xl font-medium text-foreground tracking-tight leading-snug max-w-2xl">
+               Galaxy is a technical video studio specializing in audience retention and cinematic psychology. We bridge the gap between imagination and technical execution.
+             </p>
+             
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
+                {[
+                  { title: "Technical Mastery", desc: "Expert use of industry-standard tools to create visual experiences that command attention." },
+                  { title: "Psychological Pacing", desc: "Optimizing every cut and transition to maintain maximum audience engagement." },
+                  { title: "Global Scalability", desc: "Content architected to perform across diverse platforms and international markets." },
+                  { title: "High Fidelity", desc: "Uncompromising quality standards for pixel-perfect results in any resolution." }
+                ].map((item) => (
+                  <div key={item.title} className="about-reveal space-y-3">
+                    <h3 className="text-[10px] uppercase tracking-[0.3em] font-bold text-foreground transition-colors group-hover:text-muted">
+                      {item.title}
+                    </h3>
+                    <p className="text-muted text-sm leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </div>
+                ))}
+             </div>
           </div>
-        </div>
-      </div>
+       </div>
     </div>
   );
 }

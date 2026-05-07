@@ -13,6 +13,16 @@ export default function Navigation() {
     return 'dark';
   });
 
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   useEffect(() => {
     const root = window.document.documentElement;
     if (theme === 'light') {
@@ -27,117 +37,147 @@ export default function Navigation() {
 
   const [isOpen, setIsOpen] = useState(false);
 
+  const menuLinks = [
+    { name: 'Portfolio', href: '#portfolio' },
+    { name: 'Services', href: '#about' },
+    { name: 'Pricing', href: '#pricing' },
+    { name: 'Blog', href: '#blog' },
+  ];
+
   return (
-    <nav className="flex w-full items-center justify-between px-6 md:px-10 py-4 md:py-6 border-b border-border bg-background transition-colors duration-500 sticky top-0 z-50">
-      <div className="flex items-center gap-3">
-        <div className="w-6 h-6 md:w-8 md:h-8 bg-foreground flex items-center justify-center transition-colors">
-          <div className="w-3 h-3 md:w-4 md:h-4 bg-background rotate-45 transition-colors" />
-        </div>
-        <span className="font-display text-lg md:text-xl font-black uppercase tracking-tighter text-foreground">Galaxy Global</span>
-      </div>
-
-      <div className="hidden lg:flex items-center gap-10 text-[10px] uppercase tracking-[0.3em] font-medium text-muted">
-        {[
-          { name: 'Portfolio', href: '#portfolio' },
-          { name: 'Services', href: '#about' },
-          { name: 'Pricing', href: '#pricing' },
-          { name: 'Blog', href: '#blog' },
-        ].map((link) => (
-          <a
-            key={link.name}
-            href={link.href}
-            onClick={(e) => {
-              e.preventDefault();
-              const lenis = (window as any).lenis;
-              if (lenis) {
-                lenis.scrollTo(link.href, {
-                  offset: -100,
-                  duration: 1.5,
-                  easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
-                });
-              } else {
-                const target = document.querySelector(link.href);
-                if (target) {
-                  const headerOffset = 100;
-                  const elementPosition = target.getBoundingClientRect().top;
-                  const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                  window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                  });
-                }
-              }
-            }}
-            className="hover:text-foreground transition-colors cursor-pointer"
-          >
-            {link.name}
-          </a>
-        ))}
-      </div>
-
-      <div className="flex items-center gap-2 md:gap-6">
-        <button 
-          onClick={toggleTheme}
-          className="p-1.5 md:p-2 text-foreground hover:bg-foreground/10 transition-colors rounded-full"
-          aria-label="Toggle Theme"
-        >
-          {theme === 'dark' ? <Sun size={16} className="md:w-[18px] md:h-[18px]" /> : <Moon size={16} className="md:w-[18px] md:h-[18px]" />}
-        </button>
-        <motion.button 
-          whileHover={{ scale: 1.05, backgroundColor: 'var(--foreground)', color: 'var(--background)' }}
-          whileTap={{ scale: 0.95 }}
-          className="hidden sm:block px-4 md:px-6 py-1.5 md:py-2 border border-foreground text-[8px] md:text-[10px] uppercase tracking-widest transition-all"
-        >
-          Start Project
-        </motion.button>
-        
-        {/* Mobile Menu Toggle */}
-        <button 
-          onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden p-2 text-foreground"
-        >
-          <div className="w-5 h-4 flex flex-col justify-between">
-            <span className={`w-full h-0.5 bg-current transition-transform ${isOpen ? 'rotate-45 translate-y-[7px]' : ''}`} />
-            <span className={`w-full h-0.5 bg-current transition-opacity ${isOpen ? 'opacity-0' : ''}`} />
-            <span className={`w-full h-0.5 bg-current transition-transform ${isOpen ? '-rotate-45 -translate-y-[7px]' : ''}`} />
+    <>
+      {/* Desktop Navigation */}
+      <nav 
+        className={`fixed top-6 left-1/2 -translate-x-1/2 z-[100] hidden lg:flex items-center gap-8 px-8 py-3 rounded-full border border-border bg-background/60 backdrop-blur-xl transition-all duration-500 ${
+          isScrolled ? 'shadow-2xl shadow-black/20 w-[95%] max-w-5xl py-2' : 'w-[90%] max-w-4xl'
+        }`}
+      >
+        <div className="flex items-center gap-3">
+          <div className="w-6 h-6 bg-foreground flex items-center justify-center">
+            <div className="w-3 h-3 bg-background rotate-45" />
           </div>
-        </button>
-      </div>
+          <span className="font-display text-sm font-black uppercase tracking-tighter text-foreground">Galaxy</span>
+        </div>
+
+        <div className="flex-grow flex items-center justify-center gap-10 text-[9px] uppercase tracking-[0.4em] font-bold text-muted">
+          {menuLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              onClick={(e) => {
+                e.preventDefault();
+                const lenis = (window as any).lenis;
+                if (lenis) {
+                  lenis.scrollTo(link.href, { offset: -100, duration: 1.5 });
+                }
+              }}
+              className="hover:text-foreground transition-colors cursor-pointer relative group"
+            >
+              {link.name}
+              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-foreground transition-all duration-300 group-hover:w-full" />
+            </a>
+          ))}
+        </div>
+
+        <div className="flex items-center gap-4">
+          <button 
+            onClick={toggleTheme}
+            className="p-1.5 text-foreground hover:bg-foreground/10 transition-colors rounded-full"
+          >
+            {theme === 'dark' ? <Sun size={14} /> : <Moon size={14} />}
+          </button>
+          <motion.button 
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="px-5 py-1.5 bg-foreground text-background text-[9px] font-black uppercase tracking-widest rounded-full"
+          >
+            Start Project
+          </motion.button>
+        </div>
+      </nav>
+
+      {/* Mobile Sticky Top Header */}
+      <nav className="fixed top-0 left-0 w-full lg:hidden flex items-center justify-between px-6 py-4 bg-background/80 backdrop-blur-md border-b border-border z-[100]">
+        <div className="flex items-center gap-2">
+          <div className="w-5 h-5 bg-foreground flex items-center justify-center">
+            <div className="w-2.5 h-2.5 bg-background rotate-45" />
+          </div>
+          <span className="font-display text-sm font-black uppercase tracking-tighter text-foreground">Galaxy</span>
+        </div>
+        
+        <div className="flex items-center gap-2">
+          <button 
+            onClick={toggleTheme}
+            className="p-2 text-foreground"
+          >
+            {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+          </button>
+          <button 
+            onClick={() => setIsOpen(!isOpen)}
+            className="p-2 text-foreground flex flex-col gap-1 w-8 items-end"
+          >
+            <span className={`h-[1px] bg-foreground transition-all duration-300 ${isOpen ? 'w-6 rotate-45 translate-y-[2.5px]' : 'w-6'}`} />
+            <span className={`h-[1px] bg-foreground transition-all duration-300 ${isOpen ? 'w-0 opacity-0' : 'w-4'}`} />
+            <span className={`h-[1px] bg-foreground transition-all duration-300 ${isOpen ? 'w-6 -rotate-45 -translate-y-[2.5px]' : 'w-5'}`} />
+          </button>
+        </div>
+      </nav>
 
       {/* Mobile Menu Overlay */}
       <motion.div
         initial={false}
-        animate={isOpen ? { opacity: 1, x: 0 } : { opacity: 0, x: '100%' }}
-        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-        className="fixed inset-0 bg-background z-40 lg:hidden flex flex-col items-center justify-center gap-8 p-10"
+        animate={isOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: '-10%' }}
+        style={{ pointerEvents: isOpen ? 'auto' : 'none' }}
+        className="fixed inset-0 bg-background z-[90] lg:hidden flex flex-col items-center justify-center gap-8 p-10 pt-20"
       >
-        {[
-          { name: 'Portfolio', href: '#portfolio' },
-          { name: 'Services', href: '#about' },
-          { name: 'Pricing', href: '#pricing' },
-          { name: 'Blog', href: '#blog' },
-        ].map((link) => (
-          <a
-            key={link.name}
-            href={link.href}
-            onClick={(e) => {
-              e.preventDefault();
-              setIsOpen(false);
-              const lenis = (window as any).lenis;
-              if (lenis) {
-                lenis.scrollTo(link.href, { offset: -80 });
-              }
-            }}
-            className="text-2xl font-bold uppercase tracking-widest text-foreground"
-          >
-            {link.name}
-          </a>
-        ))}
-        <button className="mt-4 px-8 py-4 bg-foreground text-background text-[10px] font-black uppercase tracking-widest">
+        <div className="flex flex-col items-center gap-10">
+          {menuLinks.map((link, i) => (
+            <motion.a
+              key={link.name}
+              initial={{ opacity: 0, y: 10 }}
+              animate={isOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+              transition={{ delay: i * 0.1 }}
+              href={link.href}
+              onClick={(e) => {
+                e.preventDefault();
+                setIsOpen(false);
+                const lenis = (window as any).lenis;
+                if (lenis) lenis.scrollTo(link.href, { offset: -80 });
+              }}
+              className="text-3xl font-black uppercase tracking-widest text-foreground hover:italic"
+            >
+              {link.name}
+            </motion.a>
+          ))}
+        </div>
+        
+        <motion.button 
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={isOpen ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+          className="mt-12 px-10 py-5 bg-foreground text-background text-xs font-black uppercase tracking-[0.3em] rounded-full"
+        >
           Start Project
-        </button>
+        </motion.button>
       </motion.div>
-    </nav>
+
+      {/* Mobile Floating Bottom Bar Accessory (Nice touch) */}
+      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 lg:hidden z-[100] flex gap-2">
+         {menuLinks.slice(0, 3).map((link) => (
+           <a 
+              key={link.name}
+              href={link.href}
+              onClick={(e) => {
+                e.preventDefault();
+                const lenis = (window as any).lenis;
+                if (lenis) lenis.scrollTo(link.href, { offset: -80 });
+              }}
+              className="px-4 py-2 bg-background/50 backdrop-blur-lg border border-border rounded-full text-[7px] uppercase font-black tracking-widest text-muted"
+           >
+             {link.name}
+           </a>
+         ))}
+      </div>
+    </>
   );
 }
+

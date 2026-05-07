@@ -15,10 +15,21 @@ export default function LottieLoader({
   const [animationData, setAnimationData] = useState<any>(null);
 
   useEffect(() => {
-    fetch(animationUrl)
-      .then(res => res.json())
-      .then(data => setAnimationData(data))
-      .catch(err => console.error("Lottie fetch error:", err));
+    const loadLottie = async () => {
+      try {
+        const res = await fetch(animationUrl);
+        const contentType = res.headers.get("content-type");
+        if (contentType && contentType.includes("application/json")) {
+          const data = await res.json();
+          setAnimationData(data);
+        } else {
+          console.warn("Lottie URL did not return JSON, using fallback.");
+        }
+      } catch (err) {
+        console.error("Lottie fetch error:", err);
+      }
+    };
+    loadLottie();
   }, [animationUrl]);
 
   if (!animationData) return <div className="animate-pulse bg-foreground/5 rounded-full" style={{ width: size, height: size }} />;
